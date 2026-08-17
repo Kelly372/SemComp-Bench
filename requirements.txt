@@ -1,0 +1,22 @@
+# Core pipeline
+pandas
+polars
+pyarrow
+Pillow
+imageio[ffmpeg]
+volcengine-python-sdk
+
+# Stage 6: Panda/ImageBind splitting
+numpy
+opencv-python-headless
+scenedetect
+tqdm
+torch
+torchvision
+torchaudio
+pytorchvideo
+timm
+einops
+ftfy
+regex
+iopath

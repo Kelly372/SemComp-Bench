@@ -1,0 +1,47 @@
+{
+  "news_keywords": [
+    "News",
+    "Briefing",
+    "Coverage",
+    "Current Affairs",
+    "Deep Dive",
+    "Documentary",
+    "Exclusive",
+    "Headline",
+    "Interview",
+    "Live","Live Update",
+    "Press Conference",
+    "Report"
+  ],
+  "movie_keywords": [
+    "Behind the scenes",
+    "Blooper",
+    "Casting",
+    "Movie Clip",
+    "Playback",
+    "Preview",
+    "Review",
+    "Spoiler",
+    "Teaser",
+    "TV Series",
+    "Talk","Talks","TalkShow"
+  ],
+  "entertainment_keywords": [
+    "ASMR",
+    "Celebrity",
+    "Challenge",
+    "Concert",
+    "Gaming",
+    "Highlights",
+    "Music Video",
+    "Podcast",
+    "Prank",
+    "Reaction","Reacts",
+    "Travel",
+    "Unboxing",
+    "Variety Show",
+    "Vlog",
+    "HBO","SportsCenter","NFL","NBA"
+  ]
+}
+

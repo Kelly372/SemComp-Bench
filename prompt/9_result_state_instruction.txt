@@ -1,0 +1,100 @@
+You are an expert annotator for an outcome-driven video generation dataset.
+
+You are given one sample:
+
+Reference image:
+{anchor_image}
+
+Outcome video:
+{outcome_video}
+
+Original video instruction:
+{video_instruction}
+
+Original Chinese video instruction, if available:
+{video_instruction_zh}
+
+Video goal, if available:
+{goal}
+
+Alignment type:
+{align_type_label}
+
+Preserved attributes:
+{align_type_preserved_attributes}
+
+
+Output three separate annotation parts in English and Chinese:
+1. "video_description": A detailed description of the visible content in the outcome video.
+2. "reference_image_description": A concise description of the task-relevant visible content in the reference image.
+3. "preserve_ignore": One concise sentence describing what should remain consistent with the reference image and what may change or be ignored.
+
+Before writing, internally identify:
+- main_subject: the main object, person, animal, material, component, or scene element most relevant to the video goal and outcome video.
+- main_visual_state: the most task-relevant visible state or scene presentation in the outcome video, including how the main subject appears, its condition, pose, position, spatial relation, completion level, and relation to surrounding elements; include important actions only when they are clearly visible.
+- secondary_elements: supporting objects, people, tools, or background elements.
+Do not output main_subject, main_visual_state, or secondary_elements as separate fields. Use them only to guide the descriptions.
+
+Length requirements:
+- "video_description_en" and "video_description_zh": 4 to 6 sentences.
+- "reference_image_description_en" and "reference_image_description_zh": exactly 1 sentence.
+- "preserve_ignore_en" and "preserve_ignore_zh": exactly 1 sentence.
+
+For "video_description":
+- Describe only the visible content of the outcome video and do not mention the reference image.
+- Use the video goal and original instruction only to identify the main subject and main visual state; do not invent details that are not visible in the video.
+- The first sentence should focus on the main subject and its most important visible attributes.
+- Describe the main object attributes, main visual state, scene presentation, and clearly visible important actions.
+- For the main subject, include relevant details when visible: category, count, color, material, texture, surface appearance, shape, structure, size, height, width, position, spatial relation, orientation, viewing angle, pose, action, expression, arrangement, and completion level.
+- If the main subject is a person or animal, describe visible clothing, pose, gesture, facial expression, body orientation, and interaction when relevant.
+- If the main subject is an object, describe visible material, structure, surface texture, state, position, orientation, and relation to other objects when relevant.
+- Describe secondary objects, people, tools, or background elements only when they help explain the action, scale, scene, or result.
+- Do not describe the video frame by frame.
+- Do not include irrelevant camera motion, lighting changes, blur, compression artifacts, temporal instability, or accidental defects.
+- If the video is ambiguous, describe the most visually supported interpretation consistent with the video goal and original instruction.
+
+For "reference_image_description":
+- Describe only task-relevant visible content in the reference image.
+- Start with the source-side main subject related to the video goal.
+- Mention important object categories, colors, materials, textures, surface appearance, shapes, structures, components, count, size, height, position, orientation, layout, or scene context when relevant.
+- Do not describe the target outcome state.
+- Do not invent invisible details.
+
+For "preserve_ignore":
+- Write one sentence that includes both preservation and non-preservation requirements.
+- State which information should remain consistent with the reference image, using the alignment type and preserved attributes as guidance.
+- Also state which attributes may change, do not need to be preserved, or should be ignored because of the required outcome.
+- Focus on the main subject first.
+- Do not mention the alignment type name directly.
+- Do not repeat the full video description or the full reference image description.
+
+Use the preserved attributes as guidance:
+- object_category: preserve visible object or ingredient categories.
+- object_composition: preserve important components, parts, ingredients, materials, or assembled elements.
+- object_count: preserve the number of important objects if visible and relevant.
+- color_palette: preserve main colors or color relationships without over-constraining minor color differences.
+- material: preserve visible materials such as metal, wood, plastic, fabric, paper, food, glass, rubber, ceramic, stone, snow, or plant matter.
+- shape_structure: preserve global shape, structure, silhouette, or mechanical form unless the instruction requires structural change.
+- surface_appearance: preserve visible texture, finish, pattern, glossiness, roughness, cleanliness, damage, dirt, cutting marks, wrinkles, cooked/raw state, wetness, dryness, or other surface appearance.
+- scene_type: preserve the environment type.
+- scene_layout: preserve the main spatial arrangement of important objects or scene regions.
+- background_context: preserve background elements only when important for grounding.
+- viewpoint: preserve the camera viewpoint only when important for understanding the task.
+
+General rules:
+- Do not invent brands, text, identities, colors, materials, object categories, facial expressions, poses, or background elements that are not clearly visible.
+- Do not over-describe background elements at the expense of the main subject.
+- Do not require the original state to remain unchanged when the task requires transformation, assembly, cutting, cooking, cleaning, repairing, removal, growth, decay, deformation, or other state changes.
+- English and Chinese fields must contain the same information and constraints.
+- Output only valid JSON. Do not include Markdown, comments, explanations, or extra text.
+
+Use exactly this JSON format:
+
+{
+  "video_description_en": "...",
+  "video_description_zh": "...",
+  "reference_image_description_en": "...",
+  "reference_image_description_zh": "...",
+  "preserve_ignore_en": "...",
+  "preserve_ignore_zh": "..."
+}

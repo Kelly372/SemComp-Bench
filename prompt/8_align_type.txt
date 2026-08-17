@@ -1,0 +1,130 @@
+You are given three inputs: an instruction, an anchor image, and an outcome video.
+
+Your task is to classify the sample into exactly one preservation type and select the key attributes from the anchor image that should be preserved in the outcome video according to the instruction.
+
+Focus on the intended preservation requirement, not the visual quality of the outcome video.
+
+[Input]
+- instruction: {instruction}
+- Anchor image: {anchor_image}
+- Outcome video: {outcome_video}
+
+Choose exactly one of the following four preservation types:
+
+A. Object Element
+The anchor image provides semantic object elements that should be used to generate the desired outcome. These may include object categories, components, ingredients, materials, quantities, or color information. The exact object instance appearance, detailed texture, precise shape, layout, and background do not need to be preserved.
+Example: raw ingredients → a cooked dish; two colors of yarn → a finished scarf using the same colors.
+
+B. Identity
+The anchor image contains a person whose identity should be preserved. The same person, facial appearance, body appearance, or personal identity should remain, while editable attributes such as hairstyle, clothing, makeup, pose, or action may change if required by the instruction.
+
+C. Scene
+The anchor image provides a scene or environment that should be preserved. This may include the same scene type, spatial layout, background context, viewpoint, or key spatial relationships between objects and the scene.
+
+D. Object Appearance
+The anchor image contains a specific object instance whose visual appearance should be preserved. This includes instance-level shape, structure, color palette, material appearance, surface texture, pattern, logo, text, symbol, or other exact visual details.
+
+Metric-friendly preserved_attributes list:
+- object_category
+- object_composition
+- object_count
+- material
+- color_palette
+- shape_structure
+- surface_appearance
+- graphic_details
+- person_identity
+- face_appearance
+- body_appearance
+- pose
+- scene_type
+- scene_layout
+- spatial_relation
+- background_context
+- viewpoint
+
+Type-specific allowed attributes:
+
+A. Object Element:
+- object_category
+- object_composition
+- object_count
+- material
+- color_palette
+
+B. Identity:
+- person_identity
+- face_appearance
+- body_appearance
+- pose
+
+C. Scene:
+- scene_type
+- scene_layout
+- spatial_relation
+- background_context
+- viewpoint
+
+D. Object Appearance:
+- object_category
+- color_palette
+- material
+- shape_structure
+- surface_appearance
+- graphic_details
+
+Attribute definitions:
+
+- object_category: the relevant object category or semantic element, such as tomato, egg, yarn, wood, flower, cup, or toy.
+- object_composition: the relevant set of components, ingredients, parts, or source elements, such as tomato plus egg, two types of yarn, or flower plus wrapping paper.
+- object_count: the relevant quantity or number, such as two colors, three candles, four wheels, or a pair of shoes.
+- material: the relevant material category, such as yarn, wool, wood, metal, glass, ceramic, paper, or leather.
+- color_palette: the relevant color or color combination, such as red yarn, blue cup, red-white yarn, or black-gold package.
+- shape_structure: the major shape, silhouette, structural design, or instance-level form of a specific object.
+- surface_appearance: the surface texture, material appearance, pattern, finish, or detailed visual surface of a specific object.
+- graphic_details: important logos, text, symbols, icons, labels, marks, or printed details.
+- person_identity: the same person or personal identity.
+- face_appearance: the person's key facial appearance, facial structure, or facial characteristics.
+- body_appearance: the person's body shape, build, body proportion, or overall physical appearance.
+- pose: the person's relevant body posture, only when the pose should be preserved.
+- scene_type: the same kind of scene or environment, such as kitchen, bedroom, street, classroom, dining room, or garden.
+- scene_layout: the main spatial layout of the scene, such as room layout, table arrangement, counter layout, or object placement structure.
+- spatial_relation: key spatial relationships among important objects or between objects and the scene, such as a dish on the table, a cup beside a plate, or a person behind a counter.
+- background_context: the relevant background context, such as the same kitchen background, indoor environment, outdoor street context, or table setting.
+- viewpoint: the relevant camera viewpoint or perspective, such as top-down view, front view, side view, close-up view, or wide shot.
+
+Important classification rules:
+- Classify the intended preservation requirement, not whether the outcome video is good or bad.
+- Do not choose Object Appearance unless the exact visual appearance of a specific object instance should be preserved.
+- If only object category, composition, count, material, or color palette should be preserved, choose Object Element, not Object Appearance.
+- Preserving color alone does not mean Object Appearance.
+- Preserving material alone does not mean Object Appearance.
+- Preserving object category plus color or material still usually belongs to Object Element.
+- Choose Object Appearance only when the instruction requires preserving the same object instance or detailed visual identity, such as exact shape, structure, surface appearance, pattern, logo, text, symbol, or product-like appearance.
+- Do not choose Scene only because a background is visible. Choose Scene only if the scene, layout, environment, viewpoint, or spatial relationship is important to preserve.
+- Choose Identity when preserving the same person is central, even if clothing, hairstyle, makeup, pose, or action changes.
+- If multiple types seem possible, choose the most central preservation requirement implied by the instruction.
+
+Important attribute selection rules:
+- Select preserved_attributes only from the metric-friendly preserved_attributes list.
+- Prefer attributes allowed by the selected preservation type.
+- Select only attributes that should be preserved from the anchor image according to the instruction.
+- Do not include attributes that should be changed according to the instruction.
+- Do not list every visible attribute in the anchor image.
+- Usually select 2 to 4 preserved_attributes.
+- Select at least 1 preserved_attribute.
+- Select at most 5 preserved_attributes.
+- If more than 5 attributes seem relevant, keep only the most central ones for evaluating preservation.
+- For Object Element, do not select shape_structure, surface_appearance, or graphic_details unless the task truly requires instance-level appearance preservation; in that case, choose Object Appearance instead.
+- For Object Appearance, include at least one instance-level visual attribute from shape_structure, surface_appearance, or graphic_details whenever applicable.
+- For Identity, do not include pose unless the instruction implies that the pose should be preserved.
+- For Identity, do not treat hairstyle, clothing, or makeup as preserved attributes if the instruction requires changing them.
+- For Scene, do not include object-level appearance attributes unless the central requirement is actually Object Appearance.
+
+Output only in the following JSON format:
+
+{
+  "answer": "<A/B/C/D>",
+  "type": "<Object Element / Identity / Scene / Object Appearance>",
+  "preserved_attributes": ["<attribute_1>", "<attribute_2>", "..."]
+}

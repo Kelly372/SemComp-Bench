@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments and local tooling
+.venv/
+venv/
+.idea/
+.vscode/
+
+# Credentials and machine-specific configuration
+.env
+.env.*
+!.env.example
+
+# Runtime data and generated metadata
+ReState/
+data/
+outputs/
+splitting/video_list.txt
+splitting/cutscene_frame_idx.json
+splitting/event_timecode.json
+splitting/ImageBind/.checkpoints/
+*.parquet
+*.tmp
+
+# Downloaded media and checkpoints
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.pth
+*.pt
+*.ckpt
+
+# Operating-system files
+.DS_Store
+Thumbs.db

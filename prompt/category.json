@@ -1,0 +1,98 @@
+{
+    "Food and Cooking": {
+        "Dish Making": {
+            "Anchor Frame": "Food materials or incomplete food components before forming a complete edible product.",
+            "Outcome Frame": "The completed edible product formed from the same materials or components."
+        },
+        "Food Transformation": {
+            "Anchor Frame": "The target food item before a visible cooking-related state change.",
+            "Outcome Frame": "The same food item after the cooking-related state change."
+        },
+        "Food Plating": {
+            "Anchor Frame": "Existing food components before final spatial arrangement or presentation.",
+            "Outcome Frame": "The completed food presentation after arrangement, decoration, or composition."
+        }
+    },
+    "Beauty and Fashion": {
+        "Styling": {
+            "Anchor Frame": "The target person before a visible appearance change.",
+            "Outcome Frame": "The same person after the appearance change has been completed."
+        },
+        "Tool Cleaning": {
+            "Anchor Frame": "The target beauty or fashion tool before cleaning.",
+            "Outcome Frame": "The same tool after it has been cleaned into a reusable state."
+        },
+        "Try-on": {
+            "Anchor Frame": "The target subject or external appearance specification before application.",
+            "Outcome Frame": "The target subject after the external appearance specification has been applied."
+        },
+        "Product Reveal": {
+            "Anchor Frame": "The target product before it is fully visible.",
+            "Outcome Frame": "The same product after it has been revealed and is clearly visible."
+        }
+    },
+    "Sports and Fitness": {
+        "Gear Setup": {
+            "Anchor Frame": "The target sports gear or equipment before functional configuration.",
+            "Outcome Frame": "The same gear or equipment after it has been configured for use."
+        },
+        "Body Preparation": {
+            "Anchor Frame": "The target subject before entering a sports-ready state.",
+            "Outcome Frame": "The same subject after reaching a sports-ready state."
+        },
+        "Sports Edits": {
+            "Anchor Frame": "The source sports-related visual material or identity cues before media completion.",
+            "Outcome Frame": "The completed edited sports media product."
+        }
+    },
+    "Crafts and DIY": {
+        "Assembly": {
+            "Anchor Frame": "Separate components before structural integration.",
+            "Outcome Frame": "The completed structure or object assembled from those components."
+        },
+        "Restoration": {
+            "Anchor Frame": "The target object before condition improvement.",
+            "Outcome Frame": "The same object after restoration, refurbishment, or repair."
+        },
+        "Renovation": {
+            "Anchor Frame": "The target built space before spatial reconfiguration.",
+            "Outcome Frame": "The same built space after reorganization, remodeling, or renovation."
+        },
+        "Blueprint Construction": {
+            "Anchor Frame": "The abstract design specification before physical realization.",
+            "Outcome Frame": "The physical structure built according to that specification."
+        },
+        "Material Shaping": {
+            "Anchor Frame": "The target material before physical reshaping.",
+            "Outcome Frame": "The same material after it has been reshaped into a new form."
+        }
+    },
+    "Gardening and Pets": {
+        "Plant Treatment": {
+            "Anchor Frame": "The target plant before treatment or care.",
+            "Outcome Frame": "The same plant after its state has been adjusted or improved through treatment or care."
+        },
+        "Floral Design": {
+            "Anchor Frame": "Plant or floral components before compositional arrangement.",
+            "Outcome Frame": "The completed floral or plant-based design after arrangement."
+        },
+        "Pet Grooming": {
+            "Anchor Frame": "The target pet before grooming.",
+            "Outcome Frame": "The same pet after grooming has improved its visible appearance."
+        }
+    },
+    "Arts and Precision": {
+        "Artwork Creation": {
+            "Anchor Frame": "The target artwork before completion.",
+            "Outcome Frame": "The completed artwork."
+        },
+        "Digital Creation": {
+            "Anchor Frame": "The digital reference, specification, workspace, or incomplete digital work before completion.",
+            "Outcome Frame": "The completed digital creative product."
+        },
+        "Sculpting": {
+            "Anchor Frame": "The target sculptable material before completion as a three-dimensional artwork.",
+            "Outcome Frame": "The completed three-dimensional sculpted artwork."
+        }
+    }
+}
