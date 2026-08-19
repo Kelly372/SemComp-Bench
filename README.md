@@ -204,42 +204,6 @@ Stages 8 and 9 reuse their existing output Parquet files as checkpoints. Pass
 beginning. Write outputs to durable local storage and keep intermediate files
 until the run has been verified.
 
-## Validation
-
-The included checks are offline: they do not call an external service,
-download weights, or require source videos.
-
-```bash
-python -m compileall -q .
-python -m unittest discover -s tests -v
-```
-
-An end-to-end run additionally requires source media, runtime credentials,
-model access, system media tools, and the Stage 6 checkpoint. It is not run in
-CI.
-
-## Reproducibility notes
-
-- Record the dependency versions and model identifier used for each run.
-- Use `--seed` where provided.
-- Preserve the input Parquet files and stage outputs needed to audit filtering
-  decisions.
-- VLM responses may vary across model or service revisions even with identical
-  prompts.
-
-## Data and model availability
-
-This repository does not contain source videos, extracted frames or clips,
-generated Parquet files, provider credentials, or model weights. Dataset
-metadata and reconstruction instructions should be distributed separately
-from runtime secrets and copyrighted media.
-
-## Citation
-
-If you use this pipeline, cite *SemComp-Bench: Benchmarking Semantic Task
-Completion in Video Generation*. A complete citation entry can be added after
-the public bibliographic record is available.
-
 ## License
 
 Original SemComp pipeline code is provided under the Apache License 2.0; see
@@ -262,6 +226,4 @@ a whole must not be described as commercially permissive.
 ## Contributing and security
 
 See `CONTRIBUTING.md` for contribution guidance and `SECURITY.md` for private
-vulnerability reporting guidance. Before submitting changes, run the offline
-validation commands above and confirm that no credentials, private paths,
-generated media, or dataset artifacts are included.
+vulnerability reporting guidance.
